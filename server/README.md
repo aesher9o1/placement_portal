@@ -2,10 +2,11 @@
 > Placement portal backen server made with express that communicates with [firebase](placement-portalmuj.firebaseapp.com).
 
 
-**Export your own port constant in case 4000 is busy on your machine** 
+**Export your own port constant in case 4000 is busy on your machine, and get the google cloud service secrets** 
 
 ## Installation
 *npm i -_-*
+
 
 ## Run
 nodemon ./server.js localhost 8080
