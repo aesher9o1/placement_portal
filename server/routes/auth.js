@@ -3,22 +3,28 @@ const router = require('express');
 var admin = require("firebase-admin");
 let route = router();
 
-// route.post('/', async (req, res) => {
-//     console.log(req.body['uid'])
-//     console.log(req.body)
-//     admin.auth().verifyIdToken(req.body['uid'])
-//         .then(function (decodedToken) {
-//             let uid = decodedToken.uid;
-//             res.send(uid)
+//claims are -> admin tpo student
 
-//         }).catch(function (error) {
-//             res.send(error)
-//         });
-// })
+route.get('/', async (req, response) => {
 
-route.get('/', async (req, res) => {
-    console.log(req.headers)
-    res.send({status:200, code:"yipee"})
+    admin.auth().getUser(req.headers.uid).then((userRecords) => {
+        if (userRecords.customClaims && (userRecords.customClaims).designation)
+            response.send({ status: 200, code: userRecords.customClaims.designation })
+        else {
+            admin.database().ref(`manipal/custom_claims/${req.headers.uid}`).once('value', (snapshot) => {
+                let claim;
+                if (snapshot.exists())
+                    claim = snapshot.val();
+                else
+                    claim = "student"
+                admin.auth().setCustomUserClaims(req.headers.uid, { designation: claim }).then(res => {
+                    console.log(`setting claim for user ${req.headers.uid}`)
+                    response.send({ status: 200, code: claim })
+                })
+            })
+        }
+    })
+
 })
 
 module.exports = route;

@@ -24,7 +24,6 @@ export class InterceptorService implements HttpInterceptor {
               'uid': this.afAuth.auth.currentUser.uid.toString()
             })
           })
-          console.log(toenizedReq )
           return next.handle(toenizedReq);
         })
       );
