@@ -21,6 +21,12 @@ import { ProjectsComponent } from './resumePages/projects/projects.component';
 import { EducationComponent } from './resumePages/education/education.component';
 import { SkillsComponent } from './resumePages/skills/skills.component';
 import { DownloadComponent } from './resumePages/download/download.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 
 
 
@@ -36,7 +42,11 @@ import { DownloadComponent } from './resumePages/download/download.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     HttpClientModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

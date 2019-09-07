@@ -1,1 +1,45 @@
-<p>personal-info works!</p>
+<div class="container" style="padding-top: 2em; ">
+  <form class="form-width">
+
+    <div class="row">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="">
+        <!-- <mat-error *ngIf="isEmailInvalid()">Email ID not valid</mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="">
+        <!-- <mat-error *ngIf="isEmailInvalid()">Email ID not valid</mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input matInput placeholder="">
+        <!-- <mat-error *ngIf="isEmailInvalid()">Email ID not valid</mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>        <!-- <mat-error *ngIf="isEmailInvalid()">Email ID not valid</mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <button mat-flat-button color="accent" class="button-form">Save</button>
+      <button mat-flat-button color="primary" class="button-form">Next <mat-icon>arrow_right_alt</mat-icon> </button>
+    </div>
+
+  </form>
+</div>
