@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
     //       this.defaultBehavior()
     //   })
     // )
-    return false;
+    return true;
   }
 
   defaultBehavior(): boolean {
