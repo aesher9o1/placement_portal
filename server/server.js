@@ -2,7 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var admin = require("firebase-admin");
 var serviceAccount = require("./secrets/placement-portalmuj-firebase-adminsdk-cred.json");
-var cors = require('cors')
+var cors = require('cors');
+var tokenMiddleware = require('./middlewares/verifyAuth')
 
 let apiVersion = {
     v1: '/api/v1'
@@ -19,6 +20,7 @@ admin.initializeApp({
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
+app.use('/', tokenMiddleware)
 
 let authRoute = require('./routes/auth')
 

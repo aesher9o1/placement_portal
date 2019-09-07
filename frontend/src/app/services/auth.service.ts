@@ -13,9 +13,9 @@ export class AuthService {
 
   constructor(private http: HttpClient, private afAuth: AngularFireAuth) { }
 
-  verify(uid: {}) {
-    console.log(uid)
-    this.http.post(this._verify, uid).subscribe(res => {
+  verify() {
+    
+    this.http.get(this._verify).subscribe(res => {
       console.log(res)
     }, err => {
       console.log(err)
