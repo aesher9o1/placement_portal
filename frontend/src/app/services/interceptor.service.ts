@@ -1,5 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent } from '@angular/common/http'
+import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http'
 import { FirebaseAuth } from '@angular/fire';
 import { Observable, from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -11,20 +11,21 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class InterceptorService implements HttpInterceptor {
 
-  constructor(private afAuth: AngularFireAuth, private injector: Injector) { }
+  constructor(private afAuth: AngularFireAuth) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-
 
     return from(this.afAuth.auth.currentUser.getIdToken())
       .pipe(
         switchMap(token => {
-          const headers = req.headers
-            .set('authorization', token.toString())
-            .append('Content-Type', 'application/json')
-            .append('uid', this.afAuth.auth.currentUser.uid.toString());
-
-          return next.handle(req.clone({ headers }));
+          let toenizedReq = req.clone({
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'authorization': token.toString(),
+              'uid': this.afAuth.auth.currentUser.uid.toString()
+            })
+          })
+          console.log(toenizedReq )
+          return next.handle(toenizedReq);
         })
       );
 

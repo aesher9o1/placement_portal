@@ -18,7 +18,7 @@ let route = router();
 
 route.get('/', async (req, res) => {
     console.log(req.headers)
-    res.send('yipee')
+    res.send({status:200, code:"yipee"})
 })
 
 module.exports = route;
