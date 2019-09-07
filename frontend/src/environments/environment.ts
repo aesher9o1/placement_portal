@@ -12,6 +12,10 @@ export const environment = {
     storageBucket: "",
     messagingSenderId: "166993932389",
     appId: "1:166993932389:web:71c6e303d4ee963195568c"
+  },
+  serverURL: "http://localhost:4000",
+  apiVersion: {
+    v1: '/api/v1'
   }
 };
 

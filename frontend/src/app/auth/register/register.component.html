@@ -1,1 +1,33 @@
-<p>register works!</p>
+<div class="login-container ">
+    <h1>Register</h1>
+    <div class="example-form" [formGroup]="registerForm">
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="" type="text" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="" type="password" formControlName="password">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Registration Number</mat-label>
+            <input matInput placeholder="" type="number" formControlName="rid">
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" [disabled]="registerForm.invalid" (click)="register()">Register
+            <mat-icon aria-hidden="false" style="margin-left: 0.2em" aria-label="Example home icon">
+                how_to_vote</mat-icon>
+        </button>
+        <button mat-flat-button color="primary" (click)="login()" style="margin-left: 1em">Login <mat-icon aria-hidden="false"
+                style="margin-left: 0.2em" aria-label="Example home icon">
+                arrow_right_alt</mat-icon>
+        </button>
+    </div>
+</div>
