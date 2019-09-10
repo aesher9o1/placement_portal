@@ -111,10 +111,10 @@ route.post('/register', async (req, response) => {
     var body = req.body
 
     if (!body["email"].trim().includes(body["rid"])) {
-        response.send({ code: 400, status: "The email ID does not belong to the registration number " })
+        response.send({ status: 400, message: "The email ID does not belong to the registration number " })
     }
     else if (!body["email"].trim().includes(secrets.manipalEmailSuffix)) {
-        response.send({ code: 400, status: "Please use the official email address" })
+        response.send({ status: 400, message: "Please use the official email address" })
     }
     else {
         admin.auth().createUser({
