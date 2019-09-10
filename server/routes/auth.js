@@ -49,18 +49,18 @@ route.post('/makesuperadmin', async (req, response) => {
                     student: true
                 }).then(res => {
                     console.log(`setting claim for user ${userRecord.uid}`)
-                    response.send({ status: 200, message: userRecord.uid })
+                    response.status(200).send({ message: userRecord.uid })
                 }, err => {
-                    response.send({ status: 400, message: err.message })
+                    response.status(401).send({ message: err.message })
                 })
             })
             .catch(function (error) {
                 console.log('Error creating new user:', error);
-                response.send({ status: 400, message: error.message })
+                response.status(400).send({ message: error.message })
             });
     }
     else
-        response.send({ status: 400, message: "Unauthorized" })
+        response.status(401).send({ message: "Unauthorized" })
 })
 
 /**
@@ -86,18 +86,18 @@ route.post('/normalusercreate', async (req, response) => {
                     student: true
                 }).then(res => {
                     console.log(`setting claim for user ${userRecord.uid}`)
-                    response.send({ status: 200, message: userRecord.uid })
+                    response.status(200).send({ message: userRecord.uid })
                 }, err => {
-                    response.send({ status: 400, message: err.message })
+                    response.status(401).send({ message: err.message })
                 })
             })
             .catch(function (error) {
                 console.log('Error creating new user:', error);
-                response.send({ status: 400, message: error.message })
+                response.status(401).send({ message: error.message })
             });
     }
     else
-        response.send({ status: 400, message: "Unauthorized" })
+        response.status(400).send({ message: "Unauthorized" })
 })
 
 
@@ -111,10 +111,10 @@ route.post('/register', async (req, response) => {
     var body = req.body
 
     if (!body["email"].trim().includes(body["rid"])) {
-        response.send({ status: 400, message: "The email ID does not belong to the registration number " })
+        response.status(400).send({ message: "The email ID does not belong to the registration number " })
     }
     else if (!body["email"].trim().includes(secrets.manipalEmailSuffix)) {
-        response.send({ status: 400, message: "Please use the official email address" })
+        response.status(400).send({ message: "Please use the official email address" })
     }
     else {
         admin.auth().createUser({
@@ -130,14 +130,14 @@ route.post('/register', async (req, response) => {
                     student: true
                 }).then(res => {
                     console.log(`setting claim for user ${userRecord.uid}`)
-                    response.send({ status: 200, message: userRecord.uid })
+                    response.status(200).send({ status: 200, message: "You have been sucessfully registered" })
                 }, err => {
-                    response.send({ status: 400, message: err.message })
+                    response.status(401).send({ status: 401, message: err.message })
                 })
             })
             .catch(function (error) {
                 console.log('Error creating new user:', error);
-                response.send({ status: 400, message: error.message })
+                response.status(400).send({ message: error.message })
             });
     }
 })
