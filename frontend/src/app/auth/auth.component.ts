@@ -19,7 +19,6 @@ export class AuthComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private afAuth: AngularFireAuth) { }
 
   ngOnInit() {
-
     this.afAuth.authState.pipe(takeWhile(() => this.isComponentActive)).subscribe(res => {
       if (res)
         this.router.navigate([''])

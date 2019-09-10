@@ -12,8 +12,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 
-import {MatIconModule} from '@angular/material/icon';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+import { DataService } from './services/data/data.service';
 
 
 
@@ -35,7 +36,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,
     multi: true
-  }],
+  },
+    DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

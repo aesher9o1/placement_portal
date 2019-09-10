@@ -25,12 +25,8 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.afAuth.auth.signInWithEmailAndPassword(this.loginForm.value["email"], this.loginForm.value["password"]).then(res => {
-      this.authService.verify().subscribe(res => {
-        console.log(res)
-      }, err => {
-        console.log(err)
-      })
-
+      this.router.navigate([''])
+      console.log("Logged In")
     }, err => {
       this._snackBar.open(err.message, "Retry", { duration: 2000, verticalPosition: "top" })
     })
