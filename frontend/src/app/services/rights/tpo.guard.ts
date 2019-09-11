@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { isNullOrUndefined } from 'util';
@@ -7,9 +7,9 @@ import { isNullOrUndefined } from 'util';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class TpoGuard implements CanActivate {
 
-  constructor(private afAuth: AngularFireAuth,private router: Router) { }
+  constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
   _getCurrentUser() {
     return this.afAuth.auth.currentUser
@@ -22,7 +22,7 @@ export class AdminGuard implements CanActivate {
       return this.defaultBehavior()
     else
       return this._getCurrentUser().getIdTokenResult().then((idTokenResult) => {
-        if (idTokenResult.claims.officer)
+        if (idTokenResult.claims.admin)
           return true
         else
           return this.goStudent()

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate, Router, CanLoad } from '@angular/router';
-import { Observable } from 'rxjs';
+import {CanActivate, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { DataService } from '../data/data.service';
 import { isNullOrUndefined } from 'util';
 
 @Injectable({
@@ -10,7 +8,7 @@ import { isNullOrUndefined } from 'util';
 })
 export class StudentGuard implements CanActivate {
 
-  constructor(private afAuth: AngularFireAuth, private _router: Router, private dataService: DataService) { }
+  constructor(private afAuth: AngularFireAuth, private _router: Router) { }
 
   _getCurrentUser() {
     return this.afAuth.auth.currentUser

@@ -11,11 +11,17 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   private _verify = `${environment.serverURL}${environment.apiVersion.v1}/auth`
+  private _register = `${environment.serverURL}${environment.apiVersion.v1}/auth/register`
 
   constructor(private http: HttpClient, private afAuth: AngularFireAuth) { }
 
   verify() {
     return this.http.get(this._verify)
+  }
+
+  register(data) {
+    console.log(data)
+    return this.http.post(this._register, data)
   }
 
 }

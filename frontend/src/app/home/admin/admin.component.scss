@@ -1,0 +1,25 @@
+mat-toolbar{
+    background: white!important
+}
+
+ul li{
+    list-style: none;
+    display: inline;
+    font-size: 15px;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+}
+
+li:hover{
+    cursor: pointer;
+}
+
+h3{
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    color: black
+}
+
+h3:hover{
+    cursor: pointer;
+}
